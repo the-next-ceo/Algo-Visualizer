@@ -2,9 +2,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 import javax.swing.BoxLayout;
@@ -240,25 +238,24 @@ public class MainWindow {
 	
 	private void makeRandomized() {
 		ArrayList<String> a = new ArrayList<String>(40);
-		//if (checkAllSorted() || isPaused() || isStopped()) {
-			//String arr[] = new String[50];
+		if (checkAllSorted() || isPaused() || isStopped()) {
+			
 			String[] values = numbersPane.getText().split(" ");
 
-			//List <String> name = Arrays.asList(numbersPane.getText());
+			
 			for(int i = 0; i < values.length; i++){
 				a.add(values[i]);
-				//System.out.println(arr[i]);
+				
 			}
-			//a.add(numbersPane.getText());
+			
 			Collections.shuffle(a, new Random());
 
-			System.out.println(a);
-			//System.out.println("\n");
-			//System.out.println(GetStringArray(a));
+			//System.out.println(a);
+		
 			numbersPane.setText(GetStringArray(a));
 			setValues(GetStringArray(a));
 
-		//}
+		}
 		//return  GetStringArray(a);
 	}
 
