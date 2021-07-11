@@ -2,13 +2,15 @@
 /** Runs an insertion sort algorithm. */
 public class InsertionSortThread extends SortThread {
 
-	private final MainWindow mainWindow;
+	private final InsertionMainWindow mainWindow;
 	
-	public InsertionSortThread(MainWindow mainWindow, SortPanel sp, long msdelay) {
+	public InsertionSortThread(InsertionMainWindow mergeMainWindow, SortPanel sp, long msdelay) {
 		super(sp, msdelay);
-		this.mainWindow = mainWindow;
+		this.mainWindow = mergeMainWindow;
 	}
 	
+	
+
 	public void initialSP(int index) {
 		sp.setIndex(index);
 		sp.setColorRange(0, index, Colors.ACTIVE);

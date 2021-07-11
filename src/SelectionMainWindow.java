@@ -135,9 +135,7 @@ public class SelectionMainWindow {
 			setDelay(source.getValue());
 		}
 	}
-	public void startDisplay() {
-		frame.setVisible(true);
-	}
+	
 
 	/** Sets delay between sort actions */
 	private void setDelay(int delay) {

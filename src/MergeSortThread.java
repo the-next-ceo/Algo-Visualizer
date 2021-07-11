@@ -3,9 +3,9 @@ import java.util.ArrayList;
 /** Runs a merge sort algorithm. */
 public class MergeSortThread extends SortThread {
 
-	private final MainWindow mainWindow;
+	private final MergeMainWindow mainWindow;
 
-	public MergeSortThread(MainWindow mainWindow, SortPanel sp, long msdelay) {
+	public MergeSortThread(MergeMainWindow mainWindow, SortPanel sp, long msdelay) {
 		super(sp, msdelay);
 		this.mainWindow = mainWindow;
 		sp.setIndex(-1);

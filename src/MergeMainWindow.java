@@ -16,18 +16,19 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class QuickMainWindow {
+
+public class MergeMainWindow {
     private JFrame frame;
 	private JButton startButton, pauseButton, sortedPresetButton, reversedPresetButton, randomPresetButton, randomizer;
 	private JLabel instructionsLabel, delayLabel;
-    private SortPanel quickSort;
+    private SortPanel mergeSort;
 	private JSlider delaySlider;
 	private JPanel buttonPanel;
 	private JEditorPane numbersPane;
-	private ArrayList<Integer> quickList;
+	private ArrayList<Integer> mergeList;
 	private ArrayList<SortPanel> sortPanels = new ArrayList<SortPanel>();
 
-	private QuickSortThread quickSortThread;
+	private MergeSortThread mergeSortThread;
 	private ArrayList<SortThread> sortThreads = new ArrayList<SortThread>();
 
 	private State state = State.STOPPED;
@@ -35,11 +36,11 @@ public class QuickMainWindow {
 	public SortPanel sp;
 
 
-    public QuickMainWindow() {
+    public MergeMainWindow() {
 		
 		delay = 500;
 	
-		frame = new JFrame("Quick Sort"); //change the name in every window
+		frame = new JFrame("Merge Sort"); //change the name in every window
 		frame.setLayout(new GridLayout(3, 3, 10, 10));
 		frame.setLocation(5, 5);
 	
@@ -88,22 +89,22 @@ public class QuickMainWindow {
 		buttonPanel.add(randomPresetButton);
 		buttonPanel.add(randomizer);
 	
-		quickList = new ArrayList<Integer>();
+		mergeList = new ArrayList<Integer>();
 	
-		quickSort = new SortPanel("Quick Sort");
-		quickSort.setList(quickList);
-		sortPanels.add(quickSort);
+		mergeSort = new SortPanel("Merge Sort");
+		mergeSort.setList(mergeList);
+		sortPanels.add(mergeSort);
 	
 		
-		quickSortThread = new QuickSortThread(this, quickSort, delay);
-		sortThreads.add(quickSortThread);
+		mergeSortThread = new MergeSortThread(this, mergeSort, delay);
+		sortThreads.add(mergeSortThread);
 		frame.setVisible(true);
 		
 	
 		frame.setSize(800, 1080);
 		frame.setResizable(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(quickSort);
+		frame.add(mergeSort);
 		frame.add(buttonPanel);
 		frame.add(numbersPane);
 	}
@@ -136,29 +137,28 @@ public class QuickMainWindow {
 			setDelay(source.getValue());
 		}
 	}
-	
 
 	/** Sets delay between sort actions */
 	private void setDelay(int delay) {
 		this.delay = delay;
 		delayLabel.setText("Delay = " + delay + " ms");
-		if (quickSortThread.isAlive()) {
-			quickSortThread.setDelay(delay);
+		if (mergeSortThread.isAlive()) {
+			mergeSortThread.setDelay(delay);
 		}
 		
 	}
     private void setValues(String nums) {
 		String[] numArray = nums.split(" ");
-		quickList.clear();
+		mergeList.clear();
 	
 		for (String s : numArray) {
 			if (s.matches("^[0-9]*$") && s.length() > 0) {
 				int num = Integer.parseInt(s);
-				quickList.add(num);
+				mergeList.add(num);
 				
 			}
 		}
-		quickSort.setColorRange(0, quickList.size(), Colors.ACTIVE);
+		mergeSort.setColorRange(0, mergeList.size(), Colors.ACTIVE);
 		
 	}
 
@@ -261,7 +261,7 @@ public class QuickMainWindow {
 	 * Checks if all four lists have given confirmation that they have been sorted
 	 */
 	public boolean checkAllSorted() {
-		return quickSortThread.isSorted();
+		return mergeSortThread.isSorted();
 	}
 
     void start() {
@@ -275,10 +275,10 @@ public class QuickMainWindow {
 		sortThreads.clear();
 		pauseButton.setVisible(true);
 		setValues(numbersPane.getText());
-		if (quickList.size() > 0) {
-			quickSortThread = new QuickSortThread(this, quickSort, delay);
-			sortThreads.add(quickSortThread);
-			quickSortThread.start();
+		if (mergeList.size() > 0) {
+			mergeSortThread = new MergeSortThread(this, mergeSort, delay);
+			sortThreads.add(mergeSortThread);
+			mergeSortThread.start();
 			startButton.setText("Stop");
 			startButton.setToolTipText("Stop sort.");
 			frame.repaint();
