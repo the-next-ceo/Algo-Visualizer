@@ -103,7 +103,7 @@ public class MergeMainWindow {
 	
 		frame.setSize(800, 1080);
 		frame.setResizable(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.add(mergeSort);
 		frame.add(buttonPanel);
 		frame.add(numbersPane);
