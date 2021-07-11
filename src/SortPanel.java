@@ -121,13 +121,15 @@ public class SortPanel extends JPanel {
 		g2d.drawString(message, 5, this.getHeight() - 15);
 		if (this.getListSize() > 0) {
 			hPad = this.getWidth() / ((hRatio + 1) * list.size() + 1);
+			//System.out.println(hPad);
 			vScale = (this.getHeight() - 2 * vPad - g2d.getFont().getSize() - 50)
 					/ (float) list.get(this.getMaxIndex());
-			g2d.drawRect(0, 0, this.getWidth(), this.getHeight());
+			g2d.drawRect(10, 475, this.getWidth(), this.getHeight());
 			width = hRatio * hPad;
 			int y = vPad + 20;
 			g2d.setColor(Colors.TARGET.get());
 			g2d.drawLine(0, y + Math.round(line * vScale), this.getWidth(), y + Math.round(line * vScale));
+
 			for (int i = 0; i < list.size(); i++) {
 				int x = hPad * ((hRatio + 1) * i + 1);
 				g2d.setColor(colorList.get(i).get());

@@ -15,18 +15,19 @@ import javax.swing.JSlider;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-public class SelectionMainWindow {
+
+public class QuickMainWindow {
     private JFrame frame;
 	private JButton startButton, pauseButton, sortedPresetButton, reversedPresetButton, randomPresetButton, randomizer;
 	private JLabel instructionsLabel, delayLabel;
-    private SortPanel selectionSort;
+    private SortPanel quickSort;
 	private JSlider delaySlider;
 	private JPanel buttonPanel;
 	private JEditorPane numbersPane;
-	private ArrayList<Integer> selectionList;
+	private ArrayList<Integer> quickList;
 	private ArrayList<SortPanel> sortPanels = new ArrayList<SortPanel>();
 
-	private SelectionSortThread selectionSortThread;
+	private QuickSortThread quickSortThread;
 	private ArrayList<SortThread> sortThreads = new ArrayList<SortThread>();
 
 	private State state = State.STOPPED;
@@ -34,7 +35,7 @@ public class SelectionMainWindow {
 	public SortPanel sp;
 
 
-    public SelectionMainWindow() {
+    public QuickMainWindow() {
 		
 		delay = 500;
 	
@@ -87,22 +88,22 @@ public class SelectionMainWindow {
 		buttonPanel.add(randomPresetButton);
 		buttonPanel.add(randomizer);
 	
-		selectionList = new ArrayList<Integer>();
+		quickList = new ArrayList<Integer>();
 	
-		selectionSort = new SortPanel("Selection Sort");
-		selectionSort.setList(selectionList);
-		sortPanels.add(selectionSort);
+		quickSort = new SortPanel("Selection Sort");
+		quickSort.setList(quickList);
+		sortPanels.add(quickSort);
 	
 		
-		selectionSortThread = new SelectionSortThread(this, selectionSort, delay);
-		sortThreads.add(selectionSortThread);
+		quickSortThread = new QuickSortThread(this, quickSort, delay);
+		sortThreads.add(quickSortThread);
 		frame.setVisible(true);
 		
 	
 		frame.setSize(800, 1080);
 		frame.setResizable(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(selectionSort);
+		frame.add(quickSort);
 		frame.add(buttonPanel);
 		frame.add(numbersPane);
 	}
@@ -143,23 +144,23 @@ public class SelectionMainWindow {
 	private void setDelay(int delay) {
 		this.delay = delay;
 		delayLabel.setText("Delay = " + delay + " ms");
-		if (selectionSortThread.isAlive()) {
-			selectionSortThread.setDelay(delay);
+		if (quickSortThread.isAlive()) {
+			quickSortThread.setDelay(delay);
 		}
 		
 	}
     private void setValues(String nums) {
 		String[] numArray = nums.split(" ");
-		selectionList.clear();
+		quickList.clear();
 	
 		for (String s : numArray) {
 			if (s.matches("^[0-9]*$") && s.length() > 0) {
 				int num = Integer.parseInt(s);
-				selectionList.add(num);
+				quickList.add(num);
 				
 			}
 		}
-		selectionSort.setColorRange(0, selectionList.size(), Colors.ACTIVE);
+		quickSort.setColorRange(0, quickList.size(), Colors.ACTIVE);
 		
 	}
 
@@ -262,7 +263,7 @@ public class SelectionMainWindow {
 	 * Checks if all four lists have given confirmation that they have been sorted
 	 */
 	public boolean checkAllSorted() {
-		return selectionSortThread.isSorted();
+		return quickSortThread.isSorted();
 	}
 
     void start() {
@@ -276,10 +277,10 @@ public class SelectionMainWindow {
 		sortThreads.clear();
 		pauseButton.setVisible(true);
 		setValues(numbersPane.getText());
-		if (selectionList.size() > 0) {
-			selectionSortThread = new SelectionSortThread(this, selectionSort, delay);
-			sortThreads.add(selectionSortThread);
-			selectionSortThread.start();
+		if (quickList.size() > 0) {
+			quickSortThread = new QuickSortThread(this, quickSort, delay);
+			sortThreads.add(quickSortThread);
+			quickSortThread.start();
 			startButton.setText("Stop");
 			startButton.setToolTipText("Stop sort.");
 			frame.repaint();

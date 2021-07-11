@@ -3,9 +3,9 @@ import java.util.ArrayList;
 /** Runs a quick sort algorithm with the rightmost element as pivot. */
 public class QuickSortThread extends SortThread {
 
-	private final MainWindow mainWindow;
+	private final QuickMainWindow mainWindow;
 
-	public QuickSortThread(MainWindow mainWindow, SortPanel sp, long msdelay) {
+	public QuickSortThread(QuickMainWindow mainWindow, SortPanel sp, long msdelay) {
 		super(sp, msdelay);
 		this.mainWindow = mainWindow;
 		sp.setIndex(-1);
@@ -32,7 +32,7 @@ public class QuickSortThread extends SortThread {
 				sp.setColor(i, Colors.LOWER);
 				sp.swap(i, greater);
 				greater++;
-				sp.setMessage("Moving elements before/after index " + greater + " if they are < or > " + pivot + ".");
+				sp.setMessage("Moving element " + nums.get(i) +" before/after index "  + greater + " if they are < or > " + pivot + ".");
 			} else {
 				sp.setColor(i, Colors.UPPER);
 			}

@@ -1,5 +1,4 @@
 
-
 /** Runs a selection sort algorithm. */
 public class SelectionSortThread extends SortThread {
 	
@@ -34,7 +33,7 @@ public class SelectionSortThread extends SortThread {
 				while (mainWindow.isPaused())
 					sleepThread(10);
 
-				sp.setColor(smallestIndex, Colors.TARGET);
+				//sp.setColor(smallestIndex, Colors.TARGET);
 				sp.setIndex(j);
 
 				if (sp.get(j) < sp.get(smallestIndex)) {
