@@ -91,5 +91,8 @@ public class QuickSortThread extends SortThread {
 		if (mainWindow.checkAllSorted() && mainWindow.isStarted()) {
 			mainWindow.stop();
 		}
+		
 	}
+	
+
 }

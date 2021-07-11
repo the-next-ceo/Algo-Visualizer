@@ -1,13 +1,16 @@
 
+
 /** Runs a selection sort algorithm. */
 public class SelectionSortThread extends SortThread {
+	
 
-	private final MainWindow mainWindow;
+	private final SelectionMainWindow mainWindow;
 
-	public SelectionSortThread(MainWindow mainWindow, SortPanel sp, long msdelay) {
+	public SelectionSortThread(SelectionMainWindow mainWindow, SortPanel sp, long msdelay) {
 		super(sp, msdelay);
 		this.mainWindow = mainWindow;
 	}
+
 
 	public void run() {
 		int i, smallestIndex;
@@ -65,4 +68,5 @@ public class SelectionSortThread extends SortThread {
 			mainWindow.stop();
 		}
 	}
+	
 }
