@@ -38,7 +38,7 @@ public class SelectionMainWindow {
 		
 		delay = 500;
 	
-		frame = new JFrame("Sorting Algorithms Visualizer"); //change the name in every window
+		frame = new JFrame("Selection Sort"); //change the name in every window
 		frame.setLayout(new GridLayout(3, 3, 10, 10));
 		frame.setLocation(5, 5);
 	
