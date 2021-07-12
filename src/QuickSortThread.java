@@ -16,22 +16,26 @@ public class QuickSortThread extends SortThread {
 			return -1;
 
 		int pivot = nums.get(b);
+		
 		int greater = a;
 		initialSP(a, b, pivot);
-
+		
 		for (int i = a; i < b && (mainWindow.isStarted() || mainWindow.isPaused()); i++) {
 			if (mainWindow.isStopped())
-				return -1;
-
+			return -1;
+			
 			while (mainWindow.isPaused())
-				sleepThread(10);
-
+			sleepThread(10);
+			
 			sp.setIndex(i);
-
+			
 			if (nums.get(i) < pivot) {
 				sp.setColor(i, Colors.LOWER);
 				sp.swap(i, greater);
 				greater++;
+				//sp.inbar(Integer.toString(nums.get(b)));
+				sp.inbar(Integer.toString(sp.get(nums.get(i))));
+				
 				sp.setMessage("Moving element " + nums.get(i) +" before/after index "  + greater + " if they are < or > " + pivot + ".");
 			} else {
 				sp.setColor(i, Colors.UPPER);
@@ -60,6 +64,8 @@ public class QuickSortThread extends SortThread {
 				sleepThread(10);
 
 			int pivot = partition(nums, a, b);
+			
+
 			quickSort(nums, a, pivot - 1);
 			quickSort(nums, pivot + 1, b);
 		}

@@ -46,16 +46,16 @@ public class MergeSortThread extends SortThread {
 			lower[i] = nums.get(index);
 		for (j = 0; index < b; j++, index++)
 			upper[j] = nums.get(index);
-
-		initialSP(a, mid, b);
-		sleepThread(msdelay);
+			
+			initialSP(a, mid, b);
+			sleepThread(msdelay);
 
 		i = j = 0;
 		index = a;
 		while (i < lower.length && j < upper.length && (mainWindow.isStarted() || mainWindow.isPaused())) {
 			while (mainWindow.isPaused())
-				sleepThread(10);
-
+			sleepThread(10);
+			
 			if (lower[i] < upper[j]) {
 				nums.set(index, lower[i]);
 				changeSP(lower[i], index, Colors.LOWER);
@@ -68,12 +68,14 @@ public class MergeSortThread extends SortThread {
 			index++;
 			sleepThread(msdelay);
 		}
-
+		
 		while (i < lower.length && (mainWindow.isStarted() || mainWindow.isPaused())) {
 			while (mainWindow.isPaused())
-				sleepThread(10);
-
+			sleepThread(10);
+			
 			nums.set(index, lower[i]);
+			
+			
 			changeSP(lower[i], index, Colors.LOWER);
 			i++;
 			index++;
@@ -82,16 +84,18 @@ public class MergeSortThread extends SortThread {
 
 		while (j < upper.length && (mainWindow.isStarted() || mainWindow.isPaused())) {
 			while (mainWindow.isPaused())
-				sleepThread(10);
-
+			sleepThread(10);
+			
 			nums.set(index, upper[j]);
+			
+
 			changeSP(upper[j], index, Colors.UPPER);
 			j++;
 			index++;
 			sleepThread(msdelay);
 		}
 	}
-
+	
 	private void initialSP(int a, int mid, int b) {
 		sp.setColorRange(0, Colors.INACTIVE);
 		sp.setColorRange(a, mid, Colors.LOWER);
@@ -99,15 +103,17 @@ public class MergeSortThread extends SortThread {
 		sp.setMessage("Merging values from index " + a + " to " + (b - 1) + " in order.");
 		repaint();
 	}
-
+	
 	private void initialSP(int a, int mid, int b, String message) {
 		sp.setColorRange(0, Colors.INACTIVE);
 		sp.setColorRange(a, mid, Colors.LOWER);
 		sp.setColorRange(mid, b, Colors.UPPER);
 		sp.setMessage(message);
+		
+		
 		repaint();
 	}
-
+	
 	public void changeSP(int line, int index, Colors color) {
 		sp.setLine(line);
 		sp.setColor(index, color);

@@ -3,6 +3,7 @@ import java.awt.Graphics2D;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 import javax.swing.JPanel;
 
@@ -53,6 +54,10 @@ public class SortPanel extends JPanel {
 	// Used by SortThread
 	public ArrayList<Integer> getList() {
 		return list;
+	}
+	public String greater(int index){
+		Integer bc =Collections.max(list);
+		return Integer.toString(bc);
 	}
 
 	// Returns the Color at a given index
@@ -146,15 +151,15 @@ public class SortPanel extends JPanel {
 				
 				g2d.fillRect(x, y, width, Math.round(list.get(i) * vScale));
 				if (i == index) { // index marker
-					g2d.drawString(inbar(ind), x, y);
+					/* g2d.drawString(inbar(ind), x, y);
+					g2d.setColor(Color.RED);
+					g2d.fillOval((2 * x + width) / 2 - 5, 5, 10, 10); */
+					if(index  >= list.size()-1){
+					g2d.drawString(inbar((greater(index))), x, y);
 					g2d.setColor(Color.RED);
 					g2d.fillOval((2 * x + width) / 2 - 5, 5, 10, 10);
-					if(index  == list.size()){
-					g2d.drawString(inbar(ind), x, y);
-					g2d.setColor(Color.RED);
-					g2d.fillOval((2 * x + width) / 2 - 5, 5, 10, 10);
-					}
-					else if(index < list.size()){
+					} 
+					if(index < list.size()){
 					g2d.drawString(inbar(ind), x, y);
 					g2d.setColor(Color.RED);
 					g2d.fillOval((2 * x + width) / 2 - 5, 5, 10, 10);

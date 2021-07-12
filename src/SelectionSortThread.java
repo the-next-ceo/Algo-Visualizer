@@ -23,6 +23,7 @@ public class SelectionSortThread extends SortThread {
 				sleepThread(10);
 
 			smallestIndex = i;
+
 			sp.setLine(sp.get(smallestIndex));
 			sp.setMessage("Searching remaining list for smallest element. Smallest found: " + sp.get(smallestIndex));
 
@@ -41,6 +42,8 @@ public class SelectionSortThread extends SortThread {
 					sp.setColor(smallestIndex, Colors.ACTIVE);
 					smallestIndex = j;
 					sp.setLine(sp.get(smallestIndex));
+				sp.inbar(Integer.toString(sp.get(smallestIndex)));
+
 					sp.setMessage("Searching remaining list for smallest element. Smallest found: "
 							+ sp.get(smallestIndex) + ".");
 				}

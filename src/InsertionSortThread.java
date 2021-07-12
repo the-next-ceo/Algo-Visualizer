@@ -41,18 +41,18 @@ public class InsertionSortThread extends SortThread {
 
 			initialSP(i);
 			val = sp.get(i);
-			 sp.inbar(Integer.toString(sp.get(i)));
 			//sp.inbar(Integer.toString(sp.get(i+1)));
+			sp.inbar(Integer.toString(sp.get(i)));
 			repaint();
 			sleepThread(msdelay);
 			for (j = i - 1; j >= 0 && val < sp.get(j); j--) {
 				//System.out.println(sp.get(i));
 				if (mainWindow.isStopped())
-					return;
-
+				return;
+				
 				while (mainWindow.isPaused())
-					sleepThread(10);
-
+				sleepThread(10);
+				
 				sp.swap(j, j + 1);
 				repaint();
 				sleepThread(msdelay);
