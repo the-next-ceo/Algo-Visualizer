@@ -32,8 +32,7 @@ public class InsertionSortThread extends SortThread {
 		int listSize = sp.getListSize();
 		int i, j, val;
 
-		for (i = 0; i < listSize
-				&& (mainWindow.isStarted() || mainWindow.isPaused()); i++) {
+		for (i = 0; i < listSize && (mainWindow.isStarted() || mainWindow.isPaused()); i++) {
 			if (mainWindow.isStopped())
 				return;
 
@@ -42,9 +41,12 @@ public class InsertionSortThread extends SortThread {
 
 			initialSP(i);
 			val = sp.get(i);
+			 sp.inbar(Integer.toString(sp.get(i)));
+			//sp.inbar(Integer.toString(sp.get(i+1)));
 			repaint();
 			sleepThread(msdelay);
 			for (j = i - 1; j >= 0 && val < sp.get(j); j--) {
+				//System.out.println(sp.get(i));
 				if (mainWindow.isStopped())
 					return;
 
