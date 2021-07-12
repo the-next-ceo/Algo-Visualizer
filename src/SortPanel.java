@@ -154,7 +154,7 @@ public class SortPanel extends JPanel {
 					/* g2d.drawString(inbar(ind), x, y);
 					g2d.setColor(Color.RED);
 					g2d.fillOval((2 * x + width) / 2 - 5, 5, 10, 10); */
-					if(index  >= list.size()-1){
+					if(index  == list.size()-1){
 					g2d.drawString(inbar((greater(index))), x, y);
 					g2d.setColor(Color.RED);
 					g2d.fillOval((2 * x + width) / 2 - 5, 5, 10, 10);
@@ -166,7 +166,7 @@ public class SortPanel extends JPanel {
 					}
 				}
 			}
-		}
+		} 
 
 	}
 }

@@ -34,7 +34,7 @@ public class QuickSortThread extends SortThread {
 				sp.swap(i, greater);
 				greater++;
 				//sp.inbar(Integer.toString(nums.get(b)));
-				sp.inbar(Integer.toString(sp.get(nums.get(i))));
+				sp.inbar(Integer.toString(nums.get(i)));
 				
 				sp.setMessage("Moving element " + nums.get(i) +" before/after index "  + greater + " if they are < or > " + pivot + ".");
 			} else {
