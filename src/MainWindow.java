@@ -9,12 +9,13 @@ import javax.swing.SwingUtilities;
 
 public class MainWindow {
 	private JFrame frame;
-	private JButton selectionsort, quicksort, mergesort, insertionsort;
+	private JButton selectionsort, quicksort, mergesort, insertionsort, result;
 	public SortPanel sp;
+	//private compare_result cr;
 
 	public MainWindow() {
 		frame = new JFrame("Sorting Algorithms Visualizer");
-		frame.setBounds(100, 100, 692, 545);
+		frame.setBounds(100, 100, 753, 662);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		MainListener mainListener = new MainListener();
@@ -27,26 +28,30 @@ public class MainWindow {
 		selectionsort = new JButton("Selection Sort");
 		selectionsort.addActionListener(mainListener);
 
-		selectionsort.setBounds(53, 218, 138, 55);
+		selectionsort.setBounds(52, 158, 138, 55);
 		frame.getContentPane().add(selectionsort);
 
 		quicksort = new JButton("Quick Sort");
 		quicksort.addActionListener(mainListener);
 
-		quicksort.setBounds(421, 218, 138, 55);
+		quicksort.setBounds(282, 294, 138, 55);
 		frame.getContentPane().add(quicksort);
 
 		insertionsort = new JButton("Insertion Sort");
 		insertionsort.addActionListener(mainListener);
 
-		insertionsort.setBounds(53, 351, 138, 55);
+		insertionsort.setBounds(529, 158, 138, 55);
 		frame.getContentPane().add(insertionsort);
 
 		mergesort = new JButton("Merge Sort");
 		mergesort.addActionListener(mainListener);
-		mergesort.setBounds(421, 351, 138, 55);
+		mergesort.setBounds(52, 425, 138, 55);
 		frame.getContentPane().add(mergesort);
-
+		
+		result = new JButton("Time Analysis");
+		result.setBounds(529, 425, 138, 55);
+		result.addActionListener(mainListener);
+		frame.getContentPane().add(result);
 	}
 
 	public void startDisplay() {
@@ -68,6 +73,9 @@ public class MainWindow {
 			}
 			else if (event.getSource() == insertionsort) {
 				InsertionMainWindow insertion = new InsertionMainWindow();
+			}
+			else if(event.getSource() == result){
+				ResultMainWindow result = new ResultMainWindow();
 			}
 
 		}

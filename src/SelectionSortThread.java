@@ -9,12 +9,20 @@ public class SelectionSortThread extends SortThread {
 		super(sp, msdelay);
 		this.mainWindow = mainWindow;
 	}
+	public long Selectionstart(){
+		long start = System.currentTimeMillis();
+		return start;
+	}
+	public long Selectionend(){
+		long end =  System.currentTimeMillis();
+		return end;
+	}
 
 
 	public void run() {
 		int i, smallestIndex;
 		int listSize = sp.getListSize();
-
+		Selectionstart();
 		for (i = 0; i < listSize && (mainWindow.isStarted() || mainWindow.isPaused()); i++) {
 			if (mainWindow.isStopped())
 				return;
@@ -54,12 +62,14 @@ public class SelectionSortThread extends SortThread {
 			sp.setColor(i, Colors.SORTED);
 			repaint();
 		}
+		Selectionend();
 
 		if (i == listSize) {
 			sorted = true;
 			sp.setLine(0);
-			sp.setMessage("Sorted!");
+			//sp.setMessage("Sorted!");
 			sp.setMessage("Time Complexity: O(n^2)");
+			//sp.setMessage("Time taken: " + (end-start) + "ms");
 
 		} else {
 			sp.setColorRange(i + 1, Colors.ACTIVE);
