@@ -2,27 +2,21 @@
 /** Runs a selection sort algorithm. */
 public class SelectionSortThread extends SortThread {
 	
-
+	//private ResultMainWindow result = new ResultMainWindow();
 	private final SelectionMainWindow mainWindow;
 
 	public SelectionSortThread(SelectionMainWindow mainWindow, SortPanel sp, long msdelay) {
 		super(sp, msdelay);
 		this.mainWindow = mainWindow;
 	}
-	public long Selectionstart(){
-		long start = System.currentTimeMillis();
-		return start;
-	}
-	public long Selectionend(){
-		long end =  System.currentTimeMillis();
-		return end;
-	}
+	
 
 
 	public void run() {
 		int i, smallestIndex;
 		int listSize = sp.getListSize();
-		Selectionstart();
+		long a = System.currentTimeMillis();
+		//result.Selectionstart(a);
 		for (i = 0; i < listSize && (mainWindow.isStarted() || mainWindow.isPaused()); i++) {
 			if (mainWindow.isStopped())
 				return;
@@ -50,6 +44,7 @@ public class SelectionSortThread extends SortThread {
 					sp.setColor(smallestIndex, Colors.ACTIVE);
 					smallestIndex = j;
 					sp.setLine(sp.get(smallestIndex));
+
 				sp.inbar(Integer.toString(sp.get(smallestIndex)));
 
 					sp.setMessage("Searching remaining list for smallest element. Smallest found: "
@@ -62,14 +57,17 @@ public class SelectionSortThread extends SortThread {
 			sp.setColor(i, Colors.SORTED);
 			repaint();
 		}
-		Selectionend();
+		long b = System.currentTimeMillis();
+		//result.Selectionend(b);
+		long c = b -a;
+		//result.getStart(c);
 
 		if (i == listSize) {
 			sorted = true;
 			sp.setLine(0);
 			//sp.setMessage("Sorted!");
 			sp.setMessage("Time Complexity: O(n^2)");
-			//sp.setMessage("Time taken: " + (end-start) + "ms");
+			sp.setMessage("Time taken: " + c + "ms");
 
 		} else {
 			sp.setColorRange(i + 1, Colors.ACTIVE);

@@ -75,7 +75,7 @@ public class MainWindow {
 				InsertionMainWindow insertion = new InsertionMainWindow();
 			}
 			else if(event.getSource() == result){
-				ResultMainWindow result = new ResultMainWindow();
+				ResultMainWindow res = new ResultMainWindow();
 			}
 
 		}

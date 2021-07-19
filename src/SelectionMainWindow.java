@@ -212,7 +212,7 @@ public class SelectionMainWindow {
 		for (int j = 0; j < arr.size(); j++) {
 			
 			// Assign each value to String array
-			str+= arr.get(j) + " ";
+			str += arr.get(j) + " ";
 		}
 		
 
@@ -236,7 +236,7 @@ public class SelectionMainWindow {
 			Collections.shuffle(a, new Random());
 
 			//System.out.println(a);
-		
+		   
 			numbersPane.setText(GetStringArray(a));
 			setValues(GetStringArray(a));
 

@@ -2,7 +2,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Graphics;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 import javax.swing.JPanel;
@@ -18,7 +17,6 @@ public class SortPanel extends JPanel {
 	private int line;
 	private float vScale;
 	private String name, message;
-	private String[] a;
 	private String ind;
 	public SortPanel(String name) {
 		super();
@@ -80,6 +78,7 @@ public class SortPanel extends JPanel {
 		this.message = message;
 		
 	}
+	//Will show the no on the top of the bar
 	public String inbar(String ind){
 		this.ind = ind;
 		return this.ind;

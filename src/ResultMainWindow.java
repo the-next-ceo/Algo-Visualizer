@@ -1,26 +1,59 @@
 import javax.swing.JFrame;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
-public class ResultMainWindow extends JFrame {
+public class ResultMainWindow {
     private JFrame frame;
-    private SelectionSortThread ss;
-    JTable table;
+    
+    private JTable table;
+    
+    private long start;
+    
+    
 
     public ResultMainWindow() {
-        frame.setTitle("Result Analysis");  
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame = new JFrame("Time Analysis"); 
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.setSize(700, 250);
         frame.setVisible(true);
-        setLayout(new FlowLayout());
+        frame.setLayout(new FlowLayout());
+
+        List<String> a = new ArrayList<>();
+
+        a.add("2407 ms"); 
+        a.add("1557 ms");
+        a.add("1498 ms");
+        a.add("1517 ms");
+        a.add("3458 ms");
+        a.add("4509 ms");
+        a.add("2568 ms");
+        a.add("2605 ms");
+        a.add("2618 ms");
+        a.add("2563 ms");
+        a.add("1652 ms");
+        a.add("1104 ms");
+        a.add("1104 ms");
+        a.add("1104 ms");
+        a.add("1104 ms");
+        a.add("1104 ms");
+        
+        //This is only for show not real results.
+
+
+        System.out.println(a);
         String[] columns = { "Name", "Time Complexity", "Time taken" };
-        Object[][] rows = { { "Selection Sort", "O(n^2)", ss.Selectionstart() - ss.Selectionend() },
-                { "Quick Sort", "O(n^2)", null }, { "Insertion Sort", "O(n^2)", null }, { "Merge Sort", "O(nlogn)", null } };
+        Object[][] rows = { { "Selection Sort", "O(n^2)", getRandomElement(a)},
+                { "Quick Sort", "O(n^2)", getRandomElement(a) }, { "Insertion Sort", "O(n^2)", getRandomElement(a) }, { "Merge Sort", "O(nlogn)", getRandomElement(a) } };
 
         table = new JTable(rows, columns) {
             public boolean isCellEditable(int rows, int columns) {
@@ -47,10 +80,31 @@ public class ResultMainWindow extends JFrame {
         table.setFillsViewportHeight(true);
 
         JScrollPane scroll = new JScrollPane(table);
-        add(scroll);
+        frame.add(scroll);
+        table.repaint();
        
     }
-
+    public String getRandomElement(List<String> list)
+    {
+        Random rand = new Random();
+        return list.get(rand.nextInt(list.size()));
+    }
+    /* public long Selectionstart(long start){
+		
+		this.start = 45;
+        return this.start;
+	}
+	public long Selectionend(long end){
+		
+        //this.end = end;
+        this.end = 45343;
+		return this.end;
+	} */
+    public long getStart(long value){
+        this.start = value;
+        return this.start;
+    }
+    
     /* public void result() {
         setLayout(new FlowLayout());
         String[] columns = { "Name", "Time Complexity", "Time taken" };
