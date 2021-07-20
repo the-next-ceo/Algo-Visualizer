@@ -20,7 +20,7 @@ public class ResultMainWindow {
     private long start;
     
     
-
+    private compare_result val = new compare_result();
     public ResultMainWindow() {
         frame = new JFrame("Time Analysis"); 
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -50,10 +50,10 @@ public class ResultMainWindow {
         //This is only for show not real results.
 
 
-        System.out.println(a);
+        // System.out.println(a);
         String[] columns = { "Name", "Time Complexity", "Time taken" };
-        Object[][] rows = { { "Selection Sort", "O(n^2)", getRandomElement(a)},
-                { "Quick Sort", "O(n^2)", getRandomElement(a) }, { "Insertion Sort", "O(n^2)", getRandomElement(a) }, { "Merge Sort", "O(nlogn)", getRandomElement(a) } };
+        Object[][] rows = { { "Selection Sort", "O(n^2)", getValue(start)},
+            { "Quick Sort", "O(n^2)", getValue(start) }, { "Insertion Sort", "O(n^2)" , getValue(start) }, { "Merge Sort", "O(nlogn)",getValue(start) } };
 
         table = new JTable(rows, columns) {
             public boolean isCellEditable(int rows, int columns) {
@@ -84,7 +84,7 @@ public class ResultMainWindow {
         table.repaint();
        
     }
-    public String getRandomElement(List<String> list)
+    public String rand_values(List<String> list)
     {
         Random rand = new Random();
         return list.get(rand.nextInt(list.size()));
@@ -100,8 +100,8 @@ public class ResultMainWindow {
         this.end = 45343;
 		return this.end;
 	} */
-    public long getStart(long value){
-        this.start = value;
+    public long getValue(long value){
+        this.start = val.getStart(start);
         return this.start;
     }
     

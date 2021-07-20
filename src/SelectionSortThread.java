@@ -3,6 +3,7 @@
 public class SelectionSortThread extends SortThread {
 	
 	//private ResultMainWindow result = new ResultMainWindow();
+	private compare_result res = new compare_result();
 	private final SelectionMainWindow mainWindow;
 
 	public SelectionSortThread(SelectionMainWindow mainWindow, SortPanel sp, long msdelay) {
@@ -60,7 +61,7 @@ public class SelectionSortThread extends SortThread {
 		long b = System.currentTimeMillis();
 		//result.Selectionend(b);
 		long c = b -a;
-		//result.getStart(c);
+		res.getStart(c);
 
 		if (i == listSize) {
 			sorted = true;
