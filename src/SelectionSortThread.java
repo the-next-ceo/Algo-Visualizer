@@ -6,6 +6,8 @@ public class SelectionSortThread extends SortThread {
 	private compare_result res = new compare_result();
 	private final SelectionMainWindow mainWindow;
 
+	private static long a,b,c;
+
 	public SelectionSortThread(SelectionMainWindow mainWindow, SortPanel sp, long msdelay) {
 		super(sp, msdelay);
 		this.mainWindow = mainWindow;
@@ -16,7 +18,7 @@ public class SelectionSortThread extends SortThread {
 	public void run() {
 		int i, smallestIndex;
 		int listSize = sp.getListSize();
-		long a = System.currentTimeMillis();
+		a = System.currentTimeMillis();
 		//result.Selectionstart(a);
 		for (i = 0; i < listSize && (mainWindow.isStarted() || mainWindow.isPaused()); i++) {
 			if (mainWindow.isStopped())
@@ -58,9 +60,10 @@ public class SelectionSortThread extends SortThread {
 			sp.setColor(i, Colors.SORTED);
 			repaint();
 		}
-		long b = System.currentTimeMillis();
+		b = System.currentTimeMillis();
 		//result.Selectionend(b);
-		long c = b -a;
+		c = b - a;
+		
 		res.getStart(c);
 
 		if (i == listSize) {
