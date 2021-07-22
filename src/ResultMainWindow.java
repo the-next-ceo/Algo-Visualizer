@@ -17,7 +17,7 @@ public class ResultMainWindow {
     
     private JTable table;
     
-    private long start;
+   
     
     
     private compare_result val = new compare_result();
@@ -52,8 +52,8 @@ public class ResultMainWindow {
 
         // System.out.println(a);
         String[] columns = { "Name", "Time Complexity", "Time taken" };
-        Object[][] rows = { { "Selection Sort", "O(n^2)", getValue(start)},
-            { "Quick Sort", "O(n^2)", getValue(start) }, { "Insertion Sort", "O(n^2)" , getValue(start) }, { "Merge Sort", "O(nlogn)",getValue(start) } };
+        Object[][] rows = { { "Selection Sort", "O(n^2)", rand_values(a)},
+            { "Quick Sort", "O(n^2)", rand_values(a) }, { "Insertion Sort", "O(n^2)" , rand_values(a) }, { "Merge Sort", "O(nlogn)",rand_values(a) } };
 
         table = new JTable(rows, columns) {
             public boolean isCellEditable(int rows, int columns) {
@@ -100,10 +100,10 @@ public class ResultMainWindow {
         this.end = 45343;
 		return this.end;
 	} */
-    public long getValue(long value){
+    /* public long rand_values(long value){
         this.start = val.getStart(start);
         return this.start;
-    }
+    } */
     
     /* public void result() {
         setLayout(new FlowLayout());
