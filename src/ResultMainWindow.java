@@ -2,8 +2,6 @@ import javax.swing.JFrame;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.awt.Color;
@@ -20,7 +18,7 @@ public class ResultMainWindow {
    
     
     
-    private compare_result val = new compare_result();
+    
     public ResultMainWindow() {
         frame = new JFrame("Time Analysis"); 
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
