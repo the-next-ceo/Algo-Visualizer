@@ -11,14 +11,9 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
 public class ResultMainWindow {
-    private JFrame frame;
-    
+    private JFrame frame; 
     private JTable table;
-    
-   
-    
-    
-    
+
     public ResultMainWindow() {
         frame = new JFrame("Time Analysis"); 
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -53,7 +48,8 @@ public class ResultMainWindow {
         Object[][] rows = { { "Selection Sort", "O(n^2)", rand_values(a)},
             { "Quick Sort", "O(n^2)", rand_values(a) }, { "Insertion Sort", "O(n^2)" , rand_values(a) }, { "Merge Sort", "O(nlogn)",rand_values(a) } };
 
-        table = new JTable(rows, columns) {
+        
+            table = new JTable(rows, columns) {
             public boolean isCellEditable(int rows, int columns) {
                 return false;
             }
