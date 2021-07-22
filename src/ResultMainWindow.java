@@ -50,7 +50,7 @@ public class ResultMainWindow {
         //This is only for show not real results.
 
 
-        // System.out.println(a);
+        
         String[] columns = { "Name", "Time Complexity", "Time taken" };
         Object[][] rows = { { "Selection Sort", "O(n^2)", rand_values(a)},
             { "Quick Sort", "O(n^2)", rand_values(a) }, { "Insertion Sort", "O(n^2)" , rand_values(a) }, { "Merge Sort", "O(nlogn)",rand_values(a) } };
@@ -75,7 +75,7 @@ public class ResultMainWindow {
                 return c;
             }
         };
-        // table.isCellEditable(rows, columns);
+        
         table.setPreferredScrollableViewportSize(new Dimension(500, 65));
         table.setFillsViewportHeight(true);
 
@@ -89,53 +89,4 @@ public class ResultMainWindow {
         Random rand = new Random();
         return list.get(rand.nextInt(list.size()));
     }
-    /* public long Selectionstart(long start){
-		
-		this.start = 45;
-        return this.start;
-	}
-	public long Selectionend(long end){
-		
-        //this.end = end;
-        this.end = 45343;
-		return this.end;
-	} */
-    /* public long rand_values(long value){
-        this.start = val.getStart(start);
-        return this.start;
-    } */
-    
-    /* public void result() {
-        setLayout(new FlowLayout());
-        String[] columns = { "Name", "Time Complexity", "Time taken" };
-        Object[][] rows = { { "Selection Sort", "da", ss.Selectionstart() - ss.Selectionend() },
-                { "Quick Sort", "sa", null }, { "Insertion Sort", "ads", null }, { "Merge Sort", "fa", null } };
-
-        table = new JTable(rows, columns) {
-            public boolean isCellEditable(int rows, int columns) {
-                return false;
-            }
-
-            public Component prepareRenderer(TableCellRenderer r, int rows, int columns) {
-                Component c = super.prepareRenderer(r, rows, columns);
-
-                if (rows % 2 == 0)
-                    c.setBackground(Color.WHITE);
-
-                else
-                    c.setBackground(Color.LIGHT_GRAY);
-
-                if (isCellSelected(rows, columns) == true) {
-                    c.setBackground(Color.GREEN);
-                }
-                return c;
-            }
-        };
-        // table.isCellEditable(rows, columns);
-        table.setPreferredScrollableViewportSize(new Dimension(500, 65));
-        table.setFillsViewportHeight(true);
-
-        JScrollPane scroll = new JScrollPane(table);
-        add(scroll);
-    } */
 }
