@@ -51,16 +51,21 @@ public class InsertionMainWindow {
 		startButton.setText("Start");
 		startButton.setToolTipText("Start sort with numbers provided in text box.");
 		startButton.addActionListener(buttonListener);
+	    
 		pauseButton = new JButton("Pause");
 		pauseButton.setToolTipText("Pause the current sort.");
 		pauseButton.setVisible(false);
 		pauseButton.addActionListener(buttonListener);
+	    
 		sortedPresetButton = new JButton("Use sorted list");
 		sortedPresetButton.addActionListener(buttonListener);
+	    
 		reversedPresetButton = new JButton("Use reversed list");
 		reversedPresetButton.addActionListener(buttonListener);
+	    
 		randomPresetButton = new JButton("Use randomized list");
 		randomPresetButton.addActionListener(buttonListener);
+	    
 		randomizer = new JButton();
 		randomizer.setText("Randomizer");
 		randomizer.setToolTipText("Changes the position of numbers");
